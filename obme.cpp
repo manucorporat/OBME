@@ -28,15 +28,15 @@
 #include "mersenne/mersenne.h"
 
 namespace obme {
-    uint64_t* _OBME_MASK = NULL;
+    obme_type* _OBME_MASK = NULL;
     
     void obme_init()
     {
         // Allocates the mask in the heap because of security reasons.
-        _OBME_MASK = (uint64_t*)malloc(sizeof(uint64_t));
+        _OBME_MASK = (obme_type*)malloc(sizeof(obme_type));
         
-        // Generating two random numbers fo 32bits
         int a = ms_rand();
+#if OBME_64BITS
         int b = ms_rand();
         
         // Create 64bits random numbers using two 32bits numbers.
@@ -44,6 +44,9 @@ namespace obme {
         *_OBME_MASK = a;
         *_OBME_MASK <<= 32;
         *_OBME_MASK |= b;
+#else
+        *_OBME_MASK = a;
+#endif
     }
     
     

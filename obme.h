@@ -32,7 +32,15 @@
 
 namespace obme {
     
-    extern uint64_t *_OBME_MASK;
+#define OBME_64BITS 1
+    
+#if OBME_64BITS
+    typedef uint64_t obme_type;
+#else
+    typedef uint32_t obme_type;
+#endif
+
+    extern obme_type *_OBME_MASK;
     void obme_init();
     void obme_free();
     
@@ -45,7 +53,7 @@ namespace obme {
         
         union {
             T value;
-            uint64_t integer;
+            obme_type integer;
         } reinterpret;
         reinterpret.integer = 0;
         reinterpret.value = value;
