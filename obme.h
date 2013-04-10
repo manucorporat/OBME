@@ -30,27 +30,30 @@
 #include <stdint.h>
 #include <string.h>
 
-extern uint64_t *_OBME_MASK;
-void obme_init();
-
-template <typename T> T OBME(T value)
-{
-    // Lazy initialization
-    if(_OBME_MASK == NULL)
-        obme_init();
+namespace obme {
     
+    extern uint64_t *_OBME_MASK;
+    void obme_init();
     
-    union {
-        T value;
-        uint64_t integer;
-    } reinterpret;
-    reinterpret.integer = 0;
-    reinterpret.value = value;
-    reinterpret.integer ^= *_OBME_MASK;
+    template <typename T> T OBME(T value)
+    {
+        // Lazy initialization
+        if(_OBME_MASK == NULL)
+            obme_init();
+        
+        
+        union {
+            T value;
+            uint64_t integer;
+        } reinterpret;
+        reinterpret.integer = 0;
+        reinterpret.value = value;
+        reinterpret.integer ^= *_OBME_MASK;
+        
+        return reinterpret.value;
+    }
     
-    return reinterpret.value;
+    char* OBME_T(char *text);
 }
-
-char* OBME_T(char *text);
 
 #endif

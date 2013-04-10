@@ -12,6 +12,8 @@
 #include <string.h>
 #include "obme.h"
 
+using namespace obme;
+
 void testInt32Bits()
 {
     int32_t value = 10;

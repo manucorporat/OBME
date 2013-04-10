@@ -27,31 +27,33 @@
 #include "obme.h"
 #include "mersenne.h"
 
-uint64_t* _OBME_MASK = NULL;
-
-void obme_init()
-{
-    // Allocates the mask in the heap because of security reasons.
-    _OBME_MASK = (uint64_t*)malloc(sizeof(uint64_t));
+namespace obme {
+    uint64_t* _OBME_MASK = NULL;
     
-    // Generating two random numbers fo 32bits
-    int a = ms_rand();
-    int b = ms_rand();
-    
-    // Create 64bits random numbers using two 32bits numbers.
-    *_OBME_MASK = 0;
-    *_OBME_MASK = a;
-    *_OBME_MASK <<= 32;
-    *_OBME_MASK |= b;
-}
-
-
-char* OBME_T(char *text)
-{
-    char *c = text;
-    while(*c != '\0') {
-        *c = OBME(*c);
-        ++c;
+    void obme_init()
+    {
+        // Allocates the mask in the heap because of security reasons.
+        _OBME_MASK = (uint64_t*)malloc(sizeof(uint64_t));
+        
+        // Generating two random numbers fo 32bits
+        int a = ms_rand();
+        int b = ms_rand();
+        
+        // Create 64bits random numbers using two 32bits numbers.
+        *_OBME_MASK = 0;
+        *_OBME_MASK = a;
+        *_OBME_MASK <<= 32;
+        *_OBME_MASK |= b;
     }
-    return text;
+    
+    
+    char* OBME_T(char *text)
+    {
+        char *c = text;
+        while(*c != '\0') {
+            *c = OBME(*c);
+            ++c;
+        }
+        return text;
+    }
 }
