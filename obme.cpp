@@ -25,7 +25,7 @@
 
 #include <stdlib.h>
 #include "obme.h"
-#include "mersenne.h"
+#include "mersenne/mersenne.h"
 
 namespace obme {
     uint64_t* _OBME_MASK = NULL;
@@ -51,7 +51,7 @@ namespace obme {
     {
         if(_OBME_MASK != NULL) {
             free(_OBME_MASK);
-            _OBME_MASK = 0;
+            _OBME_MASK = NULL;
         }
     }
     
