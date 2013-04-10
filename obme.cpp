@@ -23,22 +23,28 @@
  * THE SOFTWARE.
  */
 
+#include <stdlib.h>
 #include "obme.h"
 #include "mersenne.h"
 
-
-uint64_t _OBME_MASK = 0;
+uint64_t* _OBME_MASK = NULL;
 
 void obme_init()
 {
+    // Allocates the mask in the heap because of security reasons.
+    _OBME_MASK = (uint64_t*)malloc(sizeof(uint64_t));
+    
+    // Generating two random numbers fo 32bits
     int a = ms_rand();
     int b = ms_rand();
-
-    _OBME_MASK = 0;
-    _OBME_MASK = a;
-    _OBME_MASK <<= 32;
-    _OBME_MASK |= b;
+    
+    // Create 64bits random numbers using two 32bits numbers.
+    *_OBME_MASK = 0;
+    *_OBME_MASK = a;
+    *_OBME_MASK <<= 32;
+    *_OBME_MASK |= b;
 }
+
 
 char* OBME_T(char *text)
 {

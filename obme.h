@@ -28,14 +28,17 @@
 #define __OBME__
 
 #include <stdint.h>
+#include <string.h>
 
-extern uint64_t _OBME_MASK;
+extern uint64_t *_OBME_MASK;
 void obme_init();
 
 template <typename T> T OBME(T value)
 {
-    if(_OBME_MASK == 0)
+    // Lazy initialization
+    if(_OBME_MASK == NULL)
         obme_init();
+    
     
     union {
         T value;
@@ -43,7 +46,7 @@ template <typename T> T OBME(T value)
     } reinterpret;
     reinterpret.integer = 0;
     reinterpret.value = value;
-    reinterpret.integer ^= _OBME_MASK;
+    reinterpret.integer ^= *_OBME_MASK;
     
     return reinterpret.value;
 }
