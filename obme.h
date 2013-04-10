@@ -34,6 +34,7 @@ namespace obme {
     
     extern uint64_t *_OBME_MASK;
     void obme_init();
+    void obme_free();
     
     template <typename T> T OBME(T value)
     {

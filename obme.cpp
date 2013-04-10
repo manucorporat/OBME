@@ -47,6 +47,15 @@ namespace obme {
     }
     
     
+    void obme_free()
+    {
+        if(_OBME_MASK != NULL) {
+            free(_OBME_MASK);
+            _OBME_MASK = 0;
+        }
+    }
+    
+    
     char* OBME_T(char *text)
     {
         char *c = text;
