@@ -63,13 +63,12 @@ void testFloat64Bits()
 }
 
 
-
 int main()
-{
+{    
     testInt32Bits();
     testInt64Bits();
     testFloat32Bits();
-    testFloat64Bits();
+    testFloat64Bits();    
     
     return 1;
 }

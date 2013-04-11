@@ -62,6 +62,7 @@ namespace obme {
         return reinterpret.value;
     }
     
+    char* OBME_D(char *text, int length);
     char* OBME_T(char *text);
 }
 

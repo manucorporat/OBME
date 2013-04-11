@@ -59,13 +59,18 @@ namespace obme {
     }
     
     
+    char* OBME_D(char *data, int length)
+    {
+        while(length > 1) {
+            --length;
+            data[length] = OBME(data[length]);
+        }
+        return data;
+    }
+    
+    
     char* OBME_T(char *text)
     {
-        char *c = text;
-        while(*c != '\0') {
-            *c = OBME(*c);
-            ++c;
-        }
-        return text;
+        return OBME_D(text, strlen(text));
     }
 }

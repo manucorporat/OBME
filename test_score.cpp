@@ -14,7 +14,7 @@
 
 using namespace obme;
 
-float _score;
+static float _score;
 
 void addScore(float add)
 {
@@ -31,6 +31,7 @@ int main()
     addScore(110);
     addScore(210);
     
+    printf("0+100+110+210 = 420\n");
     printf("Print score: %f\n", OBME(_score));
     
     return 1;
