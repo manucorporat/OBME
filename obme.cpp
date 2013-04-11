@@ -35,18 +35,22 @@ namespace obme {
         // Allocates the mask in the heap because of security reasons.
         _OBME_MASK = (obme_type*)malloc(sizeof(obme_type));
         
-        int a = ms_rand();
+        do {
+            int a = ms_rand();
 #if OBME_64BITS
-        int b = ms_rand();
-        
-        // Create 64bits random numbers using two 32bits numbers.
-        *_OBME_MASK = 0;
-        *_OBME_MASK = a;
-        *_OBME_MASK <<= 32;
-        *_OBME_MASK |= b;
+            int b = ms_rand();
+            
+            // Create 64bits random numbers using two 32bits numbers.
+            *_OBME_MASK = 0;
+            *_OBME_MASK = a;
+            *_OBME_MASK <<= 32;
+            *_OBME_MASK |= b;
 #else
-        *_OBME_MASK = a;
+            *_OBME_MASK = a;
 #endif
+            
+        // almost impossible, 5.42 * 10^-20
+        } while(*_OBME_MASK == 0);
     }
     
     
