@@ -32,15 +32,9 @@
 
 namespace obme {
     
-#define OBME_64BITS 1
-    
-#if OBME_64BITS
     typedef uint64_t obme_type;
-#else
-    typedef uint32_t obme_type;
-#endif
-
     extern obme_type *_OBME_MASK;
+    
     void obme_init();
     void obme_free();
     

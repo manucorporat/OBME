@@ -1,4 +1,4 @@
-OBME: OBFuscated MEmory
+OBME: OBfuscated MEmory
 ====
 ####Fast and easy to use tool in simple C++ to avoid memory cheating by scanning (searching). See [igameguardian](http://gameguardian.net/forum/files/file/85-igameguardian/), "Cheat Engine"...
 

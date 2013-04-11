@@ -23,34 +23,38 @@
  * THE SOFTWARE.
  */
 
+#include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "obme.h"
-#include "mersenne/mersenne.h"
+
+#ifdef __cplusplus
+extern "C" {
+#include "mersenne/mt64.h"
+}
+#else
+#include "mersenne/mt64.h"
+#endif
 
 namespace obme {
     obme_type* _OBME_MASK = NULL;
     
     void obme_init()
     {
+        // Init random generator
+        init_genrand64(time(NULL));
+        
         // Allocates the mask in the heap because of security reasons.
         _OBME_MASK = (obme_type*)malloc(sizeof(obme_type));
+        *_OBME_MASK = 0;
         
         do {
-            int a = ms_rand();
-#if OBME_64BITS
-            int b = ms_rand();
-            
-            // Create 64bits random numbers using two 32bits numbers.
-            *_OBME_MASK = 0;
-            *_OBME_MASK = a;
-            *_OBME_MASK <<= 32;
-            *_OBME_MASK |= b;
-#else
-            *_OBME_MASK = a;
-#endif
+            *_OBME_MASK = genrand64_int64();
             
         // almost impossible, 5.42 * 10^-20
         } while(*_OBME_MASK == 0);
+        
+        // printf("%llX\n", *_OBME_MASK);
     }
     
     

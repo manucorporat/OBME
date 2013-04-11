@@ -15,7 +15,7 @@ set(PATH "")
 
 set(SRC_FILES
 obme.cpp
-mersenne/mersenne.c
+mersenne/mt19937-64.c
 )
 
 
