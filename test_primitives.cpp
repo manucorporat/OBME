@@ -35,7 +35,7 @@ void testInt64Bits()
     value = OBME(value);
 	printf("Obfuscated value: %lld \n", value);
     value = OBME(value);
-	printf("Restored value: %lld \n", value);
+    printf("Restored value: %lld \n", value);
 }
 
 void testFloat32Bits()
@@ -70,14 +70,6 @@ int main()
     testInt64Bits();
     testFloat32Bits();
     testFloat64Bits();
-    
-    char text[100];
-    strcpy(text, "hey Lou, how are you?");
-    printf("f: %s \n", text);
-    OBME_T(text);
-    printf("f: %s \n", text);
-    OBME_T(text);
-    printf("f: %s \n", text);
     
     return 1;
 }

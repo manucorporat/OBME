@@ -31,7 +31,13 @@ include_directories (${OBME_SOURCE_DIR}/${PATH})
 # Make sure the linker can find the Hello library once it is built. 
 link_directories (${OBME_BINARY_DIR}/${PATH}) 
 
-add_executable (test test.cpp) 
+add_executable (test_primitives test_primitives.cpp) 
+add_executable (test_score test_score.cpp) 
+add_executable (test_text test_text.cpp) 
+
 
 # Link the executable to the Hello library. 
-target_link_libraries (test ${LIBRARY_NAME}) 
+target_link_libraries (test_primitives ${LIBRARY_NAME}) 
+target_link_libraries (test_score ${LIBRARY_NAME}) 
+target_link_libraries (test_text ${LIBRARY_NAME}) 
+
