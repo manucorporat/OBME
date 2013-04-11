@@ -20,7 +20,7 @@ At initialization, OBME generates a 64bits cryptographically secure pseudorandom
 
 OBME's API:
 
-```C
+```cpp
 	template <typename T> T OBME( T value <any primitive type> )
 	char* OBME_T( char* value <c-array text> )
 ```
@@ -28,7 +28,7 @@ OBME's API:
 
 **USAGE: with integers.**
 
-```
+```cpp
     int64_t value = 444535345454;
     printf("\n64bits INTEGER TEST\n");
     printf("Original value: %lld \n", value);
@@ -50,14 +50,14 @@ Restored value: 444535345454
 ------
 **PRACTICAL USAGE: with floats**
 
-```
+```cpp
 float _score; 
 init {
     _score = OBME( 0.0f )
 }
-
 addToScore(float add) {
    _score = OBME( OBME(score) + add )
 }
 ```
+
 Real values are never exposed.
