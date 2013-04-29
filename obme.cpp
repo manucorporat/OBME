@@ -45,7 +45,7 @@ namespace obme {
         init_genrand64(time(NULL));
         
         // Allocates the mask in the heap because of security reasons.
-        _OBME_MASK = (obme_type*)malloc(sizeof(obme_type));
+        _OBME_MASK = new obme_type();
         *_OBME_MASK = 0;
         
         do {
