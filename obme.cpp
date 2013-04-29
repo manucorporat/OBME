@@ -28,13 +28,9 @@
 #include <time.h>
 #include "obme.h"
 
-#ifdef __cplusplus
 extern "C" {
 #include "mersenne/mt64.h"
 }
-#else
-#include "mersenne/mt64.h"
-#endif
 
 namespace obme {
     obme_type* _OBME_MASK = NULL;
