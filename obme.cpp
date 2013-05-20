@@ -33,7 +33,7 @@ extern "C" {
 }
 
 namespace obme {
-    obme_type* _OBME_MASK = NULL;
+    obme_t* _OBME_MASK = NULL;
     
     void obme_init()
     {
@@ -41,7 +41,7 @@ namespace obme {
         init_genrand64(time(NULL));
         
         // Allocates the mask in the heap because of security reasons.
-        _OBME_MASK = new obme_type();
+        _OBME_MASK = new obme_t();
         *_OBME_MASK = 0;
         
         do {

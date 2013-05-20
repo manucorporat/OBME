@@ -32,14 +32,18 @@
 
 namespace obme {
     
-    typedef uint64_t obme_type;
-    extern obme_type *_OBME_MASK;
+    typedef uint64_t obme_t;
+    extern obme_t *_OBME_MASK;
     
     void obme_init();
     void obme_free();
     
     template <typename T> T OBME(T value)
     {
+#if __cplusplus > 199711L
+        static_assert(sizeof(T) <= sizeof(obme_t), "OBME can not obfuscate types greater than obme_t.");
+#endif
+        
         // Lazy initialization
         if(_OBME_MASK == NULL)
             obme_init();
@@ -47,7 +51,7 @@ namespace obme {
         
         union {
             T value;
-            obme_type integer;
+            obme_t integer;
         } reinterpret;
         reinterpret.integer = 0;
         reinterpret.value = value;
