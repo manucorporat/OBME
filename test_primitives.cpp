@@ -21,9 +21,9 @@ void testInt32Bits()
     printf("\n32bits INTEGER TEST\n");
     printf("Original value: %d \n", value);
     value = OBME(value);
-	printf("Obfuscated value: %d \n", value);
+    printf("Obfuscated value: %d \n", value);
     value = OBME(value);
-	printf("Restored value: %d \n", value);
+    printf("Restored value: %d \n", value);
 }
 
 void testInt64Bits()
@@ -33,7 +33,7 @@ void testInt64Bits()
     printf("\n64bits INTEGER TEST\n");
     printf("Original value: %lld \n", value);
     value = OBME(value);
-	printf("Obfuscated value: %lld \n", value);
+    printf("Obfuscated value: %lld \n", value);
     value = OBME(value);
     printf("Restored value: %lld \n", value);
 }
@@ -45,9 +45,9 @@ void testFloat32Bits()
     printf("\n32bits FLOAT TEST\n");
     printf("Original value: %f \n", value);
     value = OBME(value);
-	printf("Obfuscated value: %f \n", value);
+    printf("Obfuscated value: %f \n", value);
     value = OBME(value);
-	printf("Restored value: %f \n", value);
+    printf("Restored value: %f \n", value);
 }
 
 void testFloat64Bits()
@@ -57,9 +57,9 @@ void testFloat64Bits()
     printf("\n64bits DOUBLE TEST\n");
     printf("Original value: %f \n", value);
     value = OBME(value);
-	printf("Obfuscated value: %f \n", value);
+    printf("Obfuscated value: %f \n", value);
     value = OBME(value);
-	printf("Restored value: %f \n", value);
+    printf("Restored value: %f \n", value);
 }
 
 
@@ -68,7 +68,7 @@ int main()
     testInt32Bits();
     testInt64Bits();
     testFloat32Bits();
-    testFloat64Bits();    
+    testFloat64Bits();
     
     return 1;
 }
