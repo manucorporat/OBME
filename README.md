@@ -27,8 +27,8 @@ return (variable ^ mask);
 ##API
 
 ```cpp
-template <typename T> T OBME( T value <any primitive type> )
-char* OBME_T( char* value <c-array text> )
+template <typename T> T OBME( T value ); // takes a value of any primitive type.
+char* OBME_T( char* str ); // obfuscates a string.
 ```
 
 
@@ -82,7 +82,8 @@ valueD	= OBME(valueD);
 ###Practicar usage:
 
 ```cpp
-float _score; 
+float _score;
+
 void init() {
     _score = OBME( 0.0f );
     
@@ -98,7 +99,7 @@ void addToScore(float add) {
 }
 
 void printScore() {
-	printf(@"The score is: %d \n", OBME(_score));
+	printf(@"The score is %d \n", OBME(_score));
 }
 ```
 
