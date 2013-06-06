@@ -19,8 +19,8 @@ int main()
 {
     long long i = -1000;
     for(; i < 1000; ++i) {
-        long long obf = OBME(i);
-        printf("%lld: %lld \n", OBME(obf), obf);
+        float obf = OBME(i*1.123f);
+        printf("%f: %f \n", OBME(obf), obf);
     }
     
     return 1;

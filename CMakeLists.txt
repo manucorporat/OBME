@@ -35,6 +35,7 @@ add_executable (test_primitives test_primitives.cpp)
 add_executable (test_score test_score.cpp) 
 add_executable (test_text test_text.cpp) 
 add_executable (test_integers test_integers.cpp)
+add_executable (test_floats test_floats.cpp)
 
 
 # Link the executable to the Hello library. 
@@ -42,4 +43,5 @@ target_link_libraries (test_primitives ${LIBRARY_NAME})
 target_link_libraries (test_score ${LIBRARY_NAME}) 
 target_link_libraries (test_text ${LIBRARY_NAME}) 
 target_link_libraries (test_integers ${LIBRARY_NAME}) 
+target_link_libraries (test_floats ${LIBRARY_NAME}) 
 

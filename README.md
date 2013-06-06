@@ -90,8 +90,8 @@ void init() {
     addToScore(10);
     addToScore(25);
     
-    printScore(); // prints "The score is 35"
-    printf("%d\n", _score); // prints a random number
+    printScore(); // prints "The score is 35.0"
+    printf("%f\n", _score); // prints a random number
 }
 
 void addToScore(float add) {
@@ -99,7 +99,7 @@ void addToScore(float add) {
 }
 
 void printScore() {
-	printf(@"The score is %d \n", OBME(_score));
+	printf(@"The score is %f \n", OBME(_score));
 }
 ```
 
