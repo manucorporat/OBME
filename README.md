@@ -1,9 +1,9 @@
 OBME: OBfuscated MEmory
 ====
-####Fast and easy to use tool in simple C++ to avoid memory cheating by scanning (searching). See [igameguardian](http://gameguardian.net/forum/files/file/85-igameguardian/), "Cheat Engine"...
+**Fast and easy to use tool in simple C++ to avoid memory cheating by scanning (searching). See [igameguardian](http://gameguardian.net/forum/files/file/85-igameguardian/), "Cheat Engine"…**
 
 
-***What is memory cheating by scanning?***
+##What is memory cheating by scanning?
 
 Well, it's a cheating method that access to the RAM of your app/game searching patterns. Common cheating tools like this are able to find Int8, Int16, Int32 and Float32 types easily and modify them.
 
@@ -14,11 +14,17 @@ Well, it's a cheating method that access to the RAM of your app/game searching p
 3. He performs a new filter and he gets the pointer that changed from 50 to 75, and bingo!!! he knows the address of the score's variable.
 4. Now he can change it.
 
----
+##How does OBME work?
 
-At initialization, OBME generates a 64bits cryptographically secure pseudorandom number stored in the heap as "mask".
+1. A 64bits cryptographic pseudorandom number is generated and stored as the "mask".
+2. OBME(T variable) returns a xor function applied to the bits of "variable".  
 
-OBME's API:
+	```cpp
+return (variable ^ mask);
+```
+
+
+##API
 
 ```cpp
 	template <typename T> T OBME( T value <any primitive type> )
@@ -26,29 +32,53 @@ OBME's API:
 ```
 
 
-**USAGE: with integers.**
+##Usage
+
+###With integers:
 
 ```cpp
-    int64_t value = 444535345454;
-    printf("\n64bits INTEGER TEST\n");
-    printf("Original value: %lld \n", value);
-    value = OBME(value);
-	printf("Obfuscated value: %lld \n", value);
-    value = OBME(value);
-    printf("Restored value: %lld \n", value);
+int64_t value = 100;
+printf("Original value: %lld \n", value);
+
+value = OBME(value);
+printf("Obfuscated value: %lld \n", value);
+
+value = OBME(value);
+printf("Restored value: %lld \n", value);
 ```
 
 Output:
 
 ```
-64bits INTEGER TEST
-Original value: 444535345454 
+Original value: 100 
 Obfuscated value: 7095209165337824491 
-Restored value: 444535345454 
+Restored value: 100 
 ```
 
-------
-**PRACTICAL USAGE: with floats**
+###Any Type:
+```cpp
+int64_t value64 = 1;
+uint32_t value32 = -2;
+int8_t value8 = 3;
+float valueF = 4.4f;
+double valueD = 5.2f;
+
+// Obfuscating values
+value64	= OBME(value64);
+value32	= OBME(value32);
+value8	= OBME(value8);
+valueF	= OBME(valueF);
+valueD	= OBME(valueD);
+
+// Restoring values
+value64	= OBME(value64);
+value32	= OBME(value32);
+value8	= OBME(value8);
+valueF	= OBME(valueF);
+valueD	= OBME(valueD);
+```
+
+###Practicar usage:
 
 ```cpp
 float _score; 
