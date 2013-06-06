@@ -5,9 +5,9 @@ OBME: OBfuscated MEmory
 
 ##What is memory cheating by scanning?
 
-Well, it's a cheating method that access to the RAM of your app/game searching patterns. Common cheating tools like this are able to find Int8, Int16, Int32 and Float32 types easily and modify them.
+Well, it's a cheating method that access to the physical memory of an app/game searching patterns. Common cheating tools like this are able to find Int8, Int16, Int32 and Float32 types easily and modify them.
 
-***IDEA: Modify the variable that stores the gameplay's score.***
+####IDEA: Modify the variable that stores the gameplay's score.
 
 1. If in t=0, the score is 50, the cheater will search that value in the game's RAM.
 2. Surely there are thousand of variables with that value, so he comes back to the game and change the score to 75 (for example, he kills a new buddy)
@@ -27,8 +27,8 @@ return (variable ^ mask);
 ##API
 
 ```cpp
-	template <typename T> T OBME( T value <any primitive type> )
-	char* OBME_T( char* value <c-array text> )
+template <typename T> T OBME( T value <any primitive type> )
+char* OBME_T( char* value <c-array text> )
 ```
 
 
@@ -54,6 +54,7 @@ Original value: 100
 Obfuscated value: 7095209165337824491 
 Restored value: 100 
 ```
+The obfuscated values change each time the app is started, this is because they are generated using a random generated mask of bits.
 
 ###Any Type:
 ```cpp
@@ -82,11 +83,22 @@ valueD	= OBME(valueD);
 
 ```cpp
 float _score; 
-init {
-    _score = OBME( 0.0f )
+void init() {
+    _score = OBME( 0.0f );
+    
+    addToScore(10);
+    addToScore(25);
+    
+    printScore(); // prints "The score is 35"
+    printf("%d\n", _score); // prints a random number
 }
-addToScore(float add) {
-   _score = OBME( OBME(score) + add )
+
+void addToScore(float add) {
+   _score = OBME( OBME(_score) + add );
+}
+
+void printScore() {
+	printf(@"The score is: %d \n", OBME(_score));
 }
 ```
 
