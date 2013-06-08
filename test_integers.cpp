@@ -17,11 +17,11 @@ using namespace obme;
 
 int main()
 {
-    long long i = -1000;
-    for(; i < 1000; ++i) {
-        long long obf = OBME(i);
-        printf("%lld: %lld \n", OBME(obf), obf);
-    }
-    
-    return 1;
+	long long i = -1000;
+	for(; i < 1000; ++i) {
+		long long obf = OBME(i);
+		printf("%lld: %lld \n", OBME(obf), obf);
+	}
+	
+	return 1;
 }

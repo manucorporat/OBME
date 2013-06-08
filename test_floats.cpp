@@ -17,11 +17,11 @@ using namespace obme;
 
 int main()
 {
-    long long i = -1000;
-    for(; i < 1000; ++i) {
-        float obf = OBME(i*1.123f);
-        printf("%f: %f \n", OBME(obf), obf);
-    }
-    
-    return 1;
+	long long i = -1000;
+	for(; i < 1000; ++i) {
+		float obf = OBME(i*1.123f);
+		printf("%f: %f \n", OBME(obf), obf);
+	}
+	
+	return 1;
 }

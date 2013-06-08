@@ -31,37 +31,37 @@
 #include <string.h>
 
 namespace obme {
-    
-    typedef uint64_t obme_t;
-    extern obme_t *_OBME_MASK;
-    
-    void obme_init();
-    void obme_free();
-    
-    template <typename T> T OBME(T value)
-    {
+	
+	typedef uint64_t obme_t;
+	extern obme_t *_OBME_MASK;
+	
+	void obme_init();
+	void obme_free();
+	
+	template <typename T> T OBME(T value)
+	{
 #if __cplusplus > 199711L
-        static_assert(sizeof(T) <= sizeof(obme_t), "OBME can not obfuscate types greater than obme_t.");
+		static_assert(sizeof(T) <= sizeof(obme_t), "OBME can not obfuscate types greater than obme_t.");
 #endif
-        
-        // Lazy initialization
-        if(_OBME_MASK == NULL)
-            obme_init();
-        
-        
-        union {
-            T value;
-            obme_t integer;
-        } reinterpret;
-        reinterpret.integer = 0;
-        reinterpret.value = value;
-        reinterpret.integer ^= *_OBME_MASK;
-        
-        return reinterpret.value;
-    }
-    
-    char* OBME_D(char *text, int length);
-    char* OBME_T(char *text);
+		
+		// Lazy initialization
+		if(_OBME_MASK == NULL)
+			obme_init();
+		
+		
+		union {
+			T value;
+			obme_t integer;
+		} reinterpret;
+		reinterpret.integer = 0;
+		reinterpret.value = value;
+		reinterpret.integer ^= *_OBME_MASK;
+		
+		return reinterpret.value;
+	}
+	
+	char* OBME_D(char *text, int length);
+	char* OBME_T(char *text);
 }
 
 #endif

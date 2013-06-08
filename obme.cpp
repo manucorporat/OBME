@@ -33,48 +33,48 @@ extern "C" {
 }
 
 namespace obme {
-    obme_t* _OBME_MASK = NULL;
-    
-    void obme_init()
-    {
-        // Init random generator
-        init_genrand64(time(NULL));
-        
-        // Allocates the mask in the heap because of security reasons.
-        _OBME_MASK = new obme_t();
-        *_OBME_MASK = 0;
-        
-        do {
-            *_OBME_MASK = genrand64_int64();
-            
-        // almost impossible, 5.42 * 10^-20
-        } while(*_OBME_MASK == 0);
-        
-        // printf("%llX\n", *_OBME_MASK);
-    }
-    
-    
-    void obme_free()
-    {
-        if(_OBME_MASK != NULL) {
-            delete _OBME_MASK;
-            _OBME_MASK = NULL;
-        }
-    }
-    
-    
-    char* OBME_D(char *data, int length)
-    {
-        while(length > 1) {
-            --length;
-            data[length] = OBME(data[length]);
-        }
-        return data;
-    }
-    
-    
-    char* OBME_T(char *text)
-    {
-        return OBME_D(text, strlen(text));
-    }
+	obme_t* _OBME_MASK = NULL;
+	
+	void obme_init()
+	{
+		// Init random generator
+		init_genrand64(time(NULL));
+		
+		// Allocates the mask in the heap because of security reasons.
+		_OBME_MASK = new obme_t();
+		*_OBME_MASK = 0;
+		
+		do {
+			*_OBME_MASK = genrand64_int64();
+			
+		// almost impossible, 5.42 * 10^-20
+		} while(*_OBME_MASK == 0);
+		
+		// printf("%llX\n", *_OBME_MASK);
+	}
+	
+	
+	void obme_free()
+	{
+		if(_OBME_MASK != NULL) {
+			delete _OBME_MASK;
+			_OBME_MASK = NULL;
+		}
+	}
+	
+	
+	char* OBME_D(char *data, int length)
+	{
+		while(length > 1) {
+			--length;
+			data[length] = OBME(data[length]);
+		}
+		return data;
+	}
+	
+	
+	char* OBME_T(char *text)
+	{
+		return OBME_D(text, strlen(text));
+	}
 }

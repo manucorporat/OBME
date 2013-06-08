@@ -15,14 +15,14 @@
 using namespace obme;
 int main()
 {
-    char text[100];
-    strcpy(text, "hey Lou, how are you?");
-    printf("Original: %s \n", text);
-    OBME_T(text);
+	char text[100];
+	strcpy(text, "hey Lou, how are you?");
+	printf("Original: %s \n", text);
+	OBME_T(text);
     
-    printf("Obfuscated: %s \n", text);
-    OBME_T(text);
-    printf("Restored: %s \n", text);
-    
-    return 1;
+	printf("Obfuscated: %s \n", text);
+	OBME_T(text);
+	printf("Restored: %s \n", text);
+	
+	return 1;
 }
