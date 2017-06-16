@@ -3,18 +3,18 @@ OBME: OBfuscated MEmory
 **Fast and easy to use tool in simple C++ to avoid memory cheating by scanning (searching). See [igameguardian](http://gameguardian.net/forum/files/file/85-igameguardian/), "Cheat Engine"…**
 
 
-##What is memory cheating by scanning?
+## What is memory cheating by scanning?
 
 Well, it's a cheating method that access to the physical memory of an app/game searching patterns. Common cheating tools like this are able to find Int8, Int16, Int32 and Float32 types easily and modify them.
 
-####IDEA: Modify the variable that stores the gameplay's score.
+#### IDEA: Modify the variable that stores the gameplay's score.
 
 1. If in t=0, the score is 50, the cheater will search that value in the game's RAM.
 2. Surely there are thousand of variables with that value, so he comes back to the game and change the score to 75 (for example, he kills a new buddy)
 3. He performs a new filter and he gets the pointer that changed from 50 to 75, and bingo!!! he knows the address of the score's variable.
 4. Now he can change it.
 
-##How does OBME work?
+## How does OBME work?
 
 1. A 64bits cryptographic pseudorandom number is generated and stored as the "mask".
 2. OBME(T variable) returns a xor function applied to the bits of "variable".  
@@ -24,7 +24,7 @@ return (variable ^ mask);
 ```
 
 
-##API
+## API
 
 ```cpp
 template <typename T> T OBME( T value ); // takes a value of any primitive type.
@@ -32,9 +32,9 @@ char* OBME_T( char* str ); // obfuscates a string.
 ```
 
 
-##Usage
+## Usage
 
-###With integers:
+### With integers:
 
 ```cpp
 int64_t value = 100;
@@ -56,7 +56,7 @@ Restored value: 100
 ```
 The obfuscated values change each time the app is started, this is because they are generated using a random generated mask of bits.
 
-###Any Type:
+### Any Type:
 ```cpp
 int64_t value64 = 1;
 uint32_t value32 = -2;
@@ -79,7 +79,7 @@ valueF	= OBME(valueF);
 valueD	= OBME(valueD);
 ```
 
-###Practicar usage:
+### Practicar usage:
 
 ```cpp
 float _score;
